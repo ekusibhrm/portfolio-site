@@ -34,9 +34,27 @@ export default function Header() {
 
       <div className="relative mx-auto flex max-w-3xl flex-col gap-6 px-6 py-20 sm:py-24 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
         <div className="flex flex-col gap-6">
-          <p className="font-mono text-sm text-accent">
-            <span className="text-slate-500">$</span> whoami
-          </p>
+          <div className="flex items-start justify-between gap-4">
+            <p className="font-mono text-sm text-accent">
+              <span className="text-slate-500">$</span> whoami
+            </p>
+
+            {/* small character illustration for mobile/tablet */}
+            <div className="pointer-events-none shrink-0 select-none lg:hidden">
+              <div
+                className="relative h-14 w-14 overflow-hidden rounded-full ring-1 ring-accent/20"
+                style={{ boxShadow: "0 0 24px rgba(34,211,238,0.16)" }}
+              >
+                <Image
+                  src="/character-hero.png"
+                  alt=""
+                  fill
+                  sizes="56px"
+                  className="scale-[1.15] object-cover"
+                />
+              </div>
+            </div>
+          </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Hiromu
