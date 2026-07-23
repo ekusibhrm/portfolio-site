@@ -2,7 +2,13 @@ import type { Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-navy-700 bg-navy-800/60 shadow-[0_16px_32px_-20px_rgba(0,0,0,0.6)]">
+    <article
+      className="overflow-hidden rounded-2xl border border-navy-700"
+      style={{
+        background: "rgba(255,255,255,0.02)",
+        boxShadow: "0 8px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(127,216,255,0.08)",
+      }}
+    >
       {/* code-editor style title bar */}
       <div className="flex items-center gap-1.5 border-b border-navy-700 bg-navy-900/60 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
@@ -32,7 +38,11 @@ export default function ProjectCard({ project }: { project: Project }) {
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="rounded-md border border-navy-600 bg-navy-900/60 px-2.5 py-1 font-mono text-xs text-accent"
+                className={
+                  tech === "Laravel"
+                    ? "rounded-md border border-[#f5c56b]/40 bg-[#f5c56b]/10 px-2.5 py-1 font-mono text-xs text-[#f5c56b]"
+                    : "rounded-md border border-navy-600 bg-navy-900/60 px-2.5 py-1 font-mono text-xs text-accent"
+                }
               >
                 {tech}
               </span>

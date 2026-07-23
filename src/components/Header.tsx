@@ -2,25 +2,13 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="relative overflow-hidden border-b border-navy-700 bg-navy-950">
-      {/* soft ambient light blobs */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 -left-16 h-[420px] w-[420px] rounded-full blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(34,211,238,0.16) 0%, rgba(27,36,54,0.10) 45%, transparent 72%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-1/3 -right-28 h-[380px] w-[380px] rounded-full blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(41,53,76,0.35) 0%, rgba(34,211,238,0.08) 50%, transparent 75%)",
-        }}
-      />
-
+    <header
+      className="relative overflow-hidden border-b border-navy-700"
+      style={{
+        background:
+          "radial-gradient(circle at 80% 20%, rgba(127,216,255,0.15) 0%, transparent 45%), radial-gradient(circle at 10% 90%, rgba(90,130,220,0.12) 0%, transparent 40%), var(--color-navy-950)",
+      }}
+    >
       {/* subtle code-like grid accent */}
       <div
         aria-hidden
