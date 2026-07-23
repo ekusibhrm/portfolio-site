@@ -2,7 +2,7 @@ import type { Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-navy-700 bg-navy-800/60">
+    <article className="overflow-hidden rounded-2xl border border-navy-700 bg-navy-800/60 shadow-[0_16px_32px_-20px_rgba(0,0,0,0.6)]">
       {/* code-editor style title bar */}
       <div className="flex items-center gap-1.5 border-b border-navy-700 bg-navy-900/60 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
