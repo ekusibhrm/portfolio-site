@@ -58,4 +58,17 @@ export const projects: Project[] = [
     demoNote: "架空の商品のデモLPです。実在の商品ではありません。",
     githubUrl: "https://github.com/ekusibhrm/slimoa-lp",
   },
+  {
+    slug: "vantra",
+    name: "Vantra",
+    subtitle: "架空スタートアップのコーポレートサイト",
+    challenge:
+      "Linear・Vercel・Stripeのようなプロダクト系スタートアップのトーンを参考に、App Routerでの複数ページ構成(Home/Service/Company/Recruit/Contact)のコーポレートサイトを実装したデモプロジェクトです。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    techNote:
+      "共通ヘッダー/フッターのレイアウト化、メッシュグラデーション背景、グラスモーフィズムなど、モダンなSaaSサイトのデザインパターンを実装しました。",
+    demoUrl: "https://vantra-omega.vercel.app",
+    demoNote: "架空の企業のデモサイトです。実在の企業ではありません。",
+    githubUrl: "https://github.com/ekusibhrm/vantra",
+  },
 ];
