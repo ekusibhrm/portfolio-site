@@ -45,4 +45,17 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ekusibhrm/subscription-saas-demo",
     githubPrivate: false,
   },
+  {
+    slug: "slimoa-lp",
+    name: "Slimoa LP",
+    subtitle: "架空ダイエット商品のデモLP",
+    challenge:
+      "いわゆる「ダイエット系LP」の型(ヒーロー→課題提起→特徴→お客様の声→料金→FAQ→最終CTA)を、景品表示法・薬機法に配慮しながら再現したデモプロジェクトです。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    techNote:
+      "外部ライブラリに頼らず、Intersection Observerベースのスクロールフェードインやカウントアップ演出を軽量に実装しました。",
+    demoUrl: "https://slimoa-lp.vercel.app",
+    demoNote: "架空の商品のデモLPです。実在の商品ではありません。",
+    githubUrl: "https://github.com/ekusibhrm/slimoa-lp",
+  },
 ];
