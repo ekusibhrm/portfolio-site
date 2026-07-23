@@ -30,7 +30,6 @@ export const projects: Project[] = [
     ],
     screenshotsNote: "※デモ環境は準備中のため、画面キャプチャを掲載しています",
     githubUrl: "https://github.com/ekusibhrm/laravel-ai-lab",
-    githubPrivate: true,
   },
   {
     slug: "subscription-saas-demo",
