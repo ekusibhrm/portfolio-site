@@ -71,4 +71,17 @@ export const projects: Project[] = [
     demoNote: "架空の企業のデモサイトです。実在の企業ではありません。",
     githubUrl: "https://github.com/ekusibhrm/vantra",
   },
+  {
+    slug: "sumica",
+    name: "SUMICA",
+    subtitle: "架空の内装リノベーション会社サイト",
+    challenge:
+      "「工務店っぽさ」ではなく高級感のある設計事務所寄りのトーンを目指し、木目・ベージュ基調の配色と明朝体見出しで「和」の落ち着きを表現したコーポレートサイトのデモプロジェクトです。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    techNote:
+      "next/imageによる画像最適化を前提に、施工事例(Works)を画像主体の大きめカードで見せるレイアウトを実装しました。",
+    demoUrl: "https://sumica-nu.vercel.app",
+    demoNote: "架空の企業のデモサイトです。実在の企業ではありません。",
+    githubUrl: "https://github.com/ekusibhrm/sumica",
+  },
 ];
