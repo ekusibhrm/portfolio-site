@@ -7,6 +7,8 @@ export type Project = {
   techNote: string;
   demoUrl?: string;
   demoNote?: string;
+  screenshots?: string[];
+  screenshotsNote?: string;
   githubUrl: string;
   githubPrivate?: boolean;
 };
@@ -21,6 +23,12 @@ export const projects: Project[] = [
     techStack: ["PHP", "Laravel", "MySQL", "Pest"],
     techNote:
       "設計判断・レビューは自分が担当し、実装とテストコードの作成をClaude Codeに任せる分担で開発しました。",
+    screenshots: [
+      "/screenshots/laravel-ai-lab-1.png",
+      "/screenshots/laravel-ai-lab-2.png",
+      "/screenshots/laravel-ai-lab-3.png",
+    ],
+    screenshotsNote: "※デモ環境は準備中のため、画面キャプチャを掲載しています",
     githubUrl: "https://github.com/ekusibhrm/laravel-ai-lab",
     githubPrivate: true,
   },

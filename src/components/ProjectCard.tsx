@@ -1,4 +1,5 @@
 import type { Project } from "@/lib/projects";
+import ProjectGallery from "@/components/ProjectGallery";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
@@ -72,6 +73,15 @@ export default function ProjectCard({ project }: { project: Project }) {
                   </p>
                 )}
               </>
+            ) : project.screenshots && project.screenshots.length > 0 ? (
+              <div className="mt-1.5">
+                <ProjectGallery images={project.screenshots} alt={project.name} />
+                {project.screenshotsNote && (
+                  <p className="mt-1.5 text-xs text-accent-2">
+                    {project.screenshotsNote}
+                  </p>
+                )}
+              </div>
             ) : (
               <p className="mt-1.5 text-sm text-slate-500">準備中</p>
             )}
