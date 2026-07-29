@@ -11,6 +11,7 @@ export type Project = {
   screenshotsNote?: string;
   githubUrl: string;
   githubPrivate?: boolean;
+  gumroadUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -26,7 +27,8 @@ export const projects: Project[] = [
     demoUrl: "https://subscription-saas-demo-production.up.railway.app",
     demoNote: "テスト決済のみで、実際の課金は発生しません。",
     githubUrl: "https://github.com/ekusibhrm/subscription-saas-demo",
-    githubPrivate: false,
+    githubPrivate: true,
+    gumroadUrl: "https://ekusibhrm.gumroad.com/l/auvkwoe",
   },
   {
     slug: "laravel-ai-lab",
