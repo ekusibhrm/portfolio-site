@@ -90,9 +90,19 @@ export default function ProjectCard({ project }: { project: Project }) {
           <div>
             <Label>GitHub</Label>
             {project.gumroadUrl ? (
+              <>
                 <p className="mt-1.5 text-xs text-slate-500">
                  ※ Gumroadで販売中の商品のため、非公開です
                 </p>
+                <a
+                  href={project.gumroadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1.5 inline-flex items-center gap-1.5 font-medium text-slate-200 hover:text-white hover:underline"
+                >
+                  Gumroad ↗
+                </a>
+              </>
             ) : (
               <>
               <a

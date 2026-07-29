@@ -28,7 +28,7 @@ export const projects: Project[] = [
     demoNote: "テスト決済のみで、実際の課金は発生しません。",
     githubUrl: "https://github.com/ekusibhrm/subscription-saas-demo",
     githubPrivate: true,
-    gumroadUrl: "https://ekusibhrm.gumroad.com/l/auvkwoe",
+    gumroadUrl: "https://ekusibhrm.gumroad.com/l/nrstvi",
   },
   {
     slug: "laravel-ai-lab",
@@ -47,6 +47,7 @@ export const projects: Project[] = [
     screenshotsNote: "※デモ環境は準備中のため、画面キャプチャを掲載しています",
     githubUrl: "https://github.com/ekusibhrm/laravel-ai-lab",
     githubPrivate: true,
+    gumroadUrl: "https://ekusibhrm.gumroad.com/l/auvkwoe",
   },
   {
     slug: "slimoa-lp",
