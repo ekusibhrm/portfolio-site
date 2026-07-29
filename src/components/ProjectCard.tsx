@@ -98,7 +98,8 @@ export default function ProjectCard({ project }: { project: Project }) {
                   href={project.gumroadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1.5 inline-flex items-center gap-1.5 font-medium text-slate-200 hover:text-white hover:underline"
+                  className="mt-1.5 inline-flex items-center gap-1.5 font-medium text-[#FF90E8] hover:opacity-80 hover:underline"
+                >
                 >
                   Gumroad ↗
                 </a>
