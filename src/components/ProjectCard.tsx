@@ -94,6 +94,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                  ※ Gumroadで販売中の商品のため、非公開です
                 </p>
             ) : (
+              <>
               <a
                 href={project.githubUrl}
                 target="_blank"
@@ -107,6 +108,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                   ※ 非公開リポジトリのため閲覧には権限が必要です
                 </p>
               )}
+              </>
             )}
           </div>
         </div>
