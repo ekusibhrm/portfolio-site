@@ -39,7 +39,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-navy-800 px-6 py-5 text-center text-xs text-slate-600">
+      <div className="border-t border-navy-800 px-6 pb-28 pt-5 text-left text-xs text-slate-600 xl:pb-5 xl:text-center">
         © {year}{" "}Hiromu — Built with Next.js &amp; Tailwind CSS
       </div>
     </footer>
