@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/*
+ * Tailwind v4's automatic content detection skips gitignored paths,
+ * which silently drops any utility class used only in the private
+ * (intentionally gitignored) pricing page. A wildcard @source path
+ * doesn't reliably re-include a gitignored glob, so the exact class
+ * names are safelisted here instead — this reveals utility class
+ * names, never the route itself.
+ */
+@source inline(
+  "border-y divide-y divide-navy-700 gap-x-4 gap-y-1 h-20 items-baseline min-w-0 mt-3 mt-4 mt-12 mt-14 sm:gap-5 sm:h-24 sm:p-6 sm:text-3xl sm:w-36 text-lg w-28"
+);
+
 :root {
   --background: #0a0e1a;
   --foreground: #e2e8f0;
