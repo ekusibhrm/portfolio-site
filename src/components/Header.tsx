@@ -1,24 +1,31 @@
 import Image from "next/image";
+import Parallax from "@/components/Parallax";
+import TiltWrapper from "@/components/TiltWrapper";
 
 export default function Header() {
   return (
     <header
+      id="home"
       className="relative overflow-hidden border-b border-navy-700"
       style={{
         background:
           "radial-gradient(circle at 80% 20%, rgba(127,216,255,0.15) 0%, transparent 45%), radial-gradient(circle at 10% 90%, rgba(90,130,220,0.12) 0%, transparent 40%), var(--color-navy-950)",
       }}
     >
-      {/* subtle code-like grid accent */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--color-accent) 1px, transparent 1px), linear-gradient(90deg, var(--color-accent) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
+      {/* subtle code-like grid accent, drifting slowly on scroll */}
+      <Parallax
+        speed={0.08}
+        className="pointer-events-none absolute inset-x-0 -inset-y-24 opacity-[0.06]"
+      >
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--color-accent) 1px, transparent 1px), linear-gradient(90deg, var(--color-accent) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+      </Parallax>
 
       <div className="relative mx-auto flex max-w-3xl flex-col gap-6 px-6 py-20 sm:py-24 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
         <div className="flex flex-col gap-6">
@@ -30,19 +37,23 @@ export default function Header() {
             </p>
 
             {/* small character illustration for mobile/tablet */}
-            <div className="pointer-events-none shrink-0 select-none lg:hidden">
-              <div
-                className="relative h-16 w-16 overflow-hidden rounded-full ring-1 ring-accent/20"
-                style={{ boxShadow: "0 0 24px rgba(34,211,238,0.16)" }}
+            <div
+              className="h-16 w-16 shrink-0 select-none rounded-full lg:hidden"
+              style={{ boxShadow: "0 0 24px rgba(34,211,238,0.16)" }}
+            >
+              <TiltWrapper
+                maxTiltX={10}
+                maxTiltY={10}
+                className="relative h-full w-full overflow-hidden rounded-full ring-1 ring-accent/20"
               >
                 <Image
                   src="/character-hero.png"
                   alt=""
                   fill
                   sizes="64px"
-                  className="scale-[1.15] object-cover"
+                  className="pointer-events-none scale-[1.15] object-cover"
                 />
-              </div>
+              </TiltWrapper>
             </div>
           </div>
 
@@ -78,19 +89,23 @@ export default function Header() {
         </div>
 
         {/* character illustration (same character as the Lancers header image) */}
-        <div className="pointer-events-none hidden shrink-0 select-none lg:block">
-          <div
-            className="relative h-[216px] w-[216px] overflow-hidden rounded-full ring-1 ring-accent/20"
-            style={{ boxShadow: "0 0 48px rgba(34,211,238,0.16)" }}
+        <div
+          className="hidden h-[216px] w-[216px] shrink-0 select-none rounded-full lg:block"
+          style={{ boxShadow: "0 0 48px rgba(34,211,238,0.16)" }}
+        >
+          <TiltWrapper
+            maxTiltX={10}
+            maxTiltY={12}
+            className="relative h-full w-full overflow-hidden rounded-full ring-1 ring-accent/20"
           >
             <Image
               src="/character-hero.png"
               alt=""
               fill
               sizes="216px"
-              className="scale-[1.15] object-cover"
+              className="pointer-events-none scale-[1.15] object-cover"
             />
-          </div>
+          </TiltWrapper>
         </div>
       </div>
     </header>

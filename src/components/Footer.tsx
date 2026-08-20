@@ -1,9 +1,19 @@
+import Parallax from "@/components/Parallax";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-navy-700 bg-navy-950">
-      <div className="mx-auto flex max-w-3xl flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
+    <footer
+      id="contact"
+      className="relative overflow-hidden border-t border-navy-700 bg-navy-950"
+    >
+      <Parallax
+        speed={0.05}
+        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
+      />
+
+      <div className="relative mx-auto flex max-w-3xl flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-2 font-mono text-sm">
           <span className="text-slate-500">Zenn(書籍・技術記事)</span>
           <a

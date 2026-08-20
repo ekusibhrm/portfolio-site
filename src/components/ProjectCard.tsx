@@ -1,34 +1,39 @@
-import Image from "next/image";
 import type { Project } from "@/lib/projects";
 import ProjectGallery from "@/components/ProjectGallery";
+import ProjectCoverImage from "@/components/ProjectCoverImage";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const addressBarText = project.demoUrl
+    ? new URL(project.demoUrl).hostname
+    : project.slug;
+
   return (
     <article
-      className="group overflow-hidden rounded-2xl border border-navy-700 shadow-[0_8px_30px_rgba(0,0,0,0.35),0_0_0_1px_rgba(127,216,255,0.08)] transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(0,0,0,0.55),0_0_0_1px_rgba(127,216,255,0.16)]"
+      id={project.slug}
+      className="group scroll-mt-6 overflow-hidden rounded-2xl border border-navy-700 shadow-[0_8px_30px_rgba(0,0,0,0.35),0_0_0_1px_rgba(127,216,255,0.08)] transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(0,0,0,0.55),0_0_0_1px_rgba(127,216,255,0.16)]"
       style={{ background: "rgba(255,255,255,0.02)" }}
     >
-      {/* code-editor style title bar */}
+      {/* code-editor / browser style title bar */}
       <div className="flex items-center gap-1.5 border-b border-navy-700 bg-navy-900/60 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
-        <span className="ml-3 truncate font-mono text-xs text-slate-400">
-          {project.slug}
-        </span>
+        {project.coverImage ? (
+          <span className="ml-3 flex-1 truncate rounded-md border border-navy-600 bg-navy-950/60 px-3 py-1 text-center font-mono text-xs text-slate-400">
+            {addressBarText}
+          </span>
+        ) : (
+          <span className="ml-3 truncate font-mono text-xs text-slate-400">
+            {project.slug}
+          </span>
+        )}
       </div>
 
       {project.coverImage && (
-        <div className="relative aspect-video overflow-hidden border-b border-navy-700 bg-navy-900">
-          <Image
-            src={project.coverImage}
-            alt={`${project.name} スクリーンショット`}
-            fill
-            sizes="(min-width: 768px) 768px, 100vw"
-            className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-            priority={false}
-          />
-        </div>
+        <ProjectCoverImage
+          src={project.coverImage}
+          alt={`${project.name} スクリーンショット`}
+        />
       )}
 
       <div className="flex flex-col gap-6 p-6 sm:p-8">
