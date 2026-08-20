@@ -76,6 +76,24 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ekusibhrm/vantra",
   },
   {
+    slug: "minato-tax",
+    name: "みなと税理士法人",
+    subtitle: "架空の税理士法人のコーポレートサイト",
+    challenge:
+      "グラデーション・グラスモーフィズム・ネオン装飾を一切使わず、単色のアクセントカラーと余白・タイポグラフィ・情報設計だけで「士業らしい信頼感」を表現できるかを検証したデモプロジェクトです。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    techNote:
+      "装飾要素を極力削ぎ落とし、罫線・行間・数字の並びだけでセクションを区切るレイアウトを実装しました。",
+    screenshots: [
+      "/screenshots/minato-tax-1.jpg",
+      "/screenshots/minato-tax-2.jpg",
+      "/screenshots/minato-tax-3.jpg",
+    ],
+    screenshotsNote: "※デモ環境は準備中のため、画面キャプチャを掲載しています",
+    githubUrl: "https://github.com/ekusibhrm/minato-tax",
+    githubPrivate: true,
+  },
+  {
     slug: "sumica",
     name: "SUMICA",
     subtitle: "架空の内装リノベーション会社サイト",
