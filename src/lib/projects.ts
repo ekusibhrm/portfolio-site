@@ -87,7 +87,6 @@ export const projects: Project[] = [
     demoUrl: "https://minato-tax.vercel.app",
     demoNote: "架空の税理士法人のデモサイトです。実在の事務所ではありません。",
     githubUrl: "https://github.com/ekusibhrm/minato-tax",
-    githubPrivate: true,
   },
   {
     slug: "sumica",
