@@ -89,6 +89,19 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ekusibhrm/minato-tax",
   },
   {
+    slug: "spectra-fes",
+    name: "SPECTRA FESTIVAL",
+    subtitle: "架空の音楽フェス公式サイト",
+    challenge:
+      "同じくポートフォリオに掲載しているVantra(モダンSaaS系)とは対照的な方向性として、ビビッドなネオンカラーと大胆なタイポグラフィでフェスらしい高揚感を表現したデモプロジェクトです。実写素材がない前提で、抽象的な幾何学グラフィックを写真代わりに使っています。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    techNote:
+      "開催日までの残り時間を表示するカウントダウンタイマーをクライアントコンポーネントで実装しました。",
+    demoUrl: "https://spectra-fes.vercel.app",
+    demoNote: "架空の音楽フェスのデモサイトです。実在のイベントではありません。",
+    githubUrl: "https://github.com/ekusibhrm/spectra-fes",
+  },
+  {
     slug: "sumica",
     name: "SUMICA",
     subtitle: "架空の内装リノベーション会社サイト",
