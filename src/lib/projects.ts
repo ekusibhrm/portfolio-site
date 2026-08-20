@@ -84,12 +84,8 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
     techNote:
       "装飾要素を極力削ぎ落とし、罫線・行間・数字の並びだけでセクションを区切るレイアウトを実装しました。",
-    screenshots: [
-      "/screenshots/minato-tax-1.jpg",
-      "/screenshots/minato-tax-2.jpg",
-      "/screenshots/minato-tax-3.jpg",
-    ],
-    screenshotsNote: "※デモ環境は準備中のため、画面キャプチャを掲載しています",
+    demoUrl: "https://minato-tax.vercel.app",
+    demoNote: "架空の税理士法人のデモサイトです。実在の事務所ではありません。",
     githubUrl: "https://github.com/ekusibhrm/minato-tax",
     githubPrivate: true,
   },
