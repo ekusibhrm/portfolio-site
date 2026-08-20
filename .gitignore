@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# private, unlisted pages (deployed manually via `vercel --prod`,
+# kept out of the public repo intentionally). Wildcard on purpose —
+# the exact route name must not appear in this committed file.
+/src/app/pricing-*/
+
+# source material for private pages
+/docs/
