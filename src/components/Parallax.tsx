@@ -5,10 +5,14 @@ import type { ReactNode } from "react";
 
 export default function Parallax({
   speed = 0.15,
+  ease = 0.08,
   className,
   children,
 }: {
+  /** Position multiplier: how far the element drifts relative to scroll. */
   speed?: number;
+  /** Catch-up rate per frame (0-1). Lower = more inertia/lag behind scroll. */
+  ease?: number;
   className?: string;
   children?: ReactNode;
 }) {
@@ -20,26 +24,49 @@ export default function Parallax({
     const el = ref.current;
     if (!el) return;
 
-    let ticking = false;
+    let current = 0;
+    let rafId: number | null = null;
 
-    function update() {
-      if (!el) return;
+    function target() {
+      if (!el) return 0;
       const rect = el.getBoundingClientRect();
-      const offset = (rect.top - window.innerHeight / 2) * speed;
-      el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
-      ticking = false;
+      return (rect.top - window.innerHeight / 2) * speed;
+    }
+
+    function tick() {
+      const goal = target();
+      current += (goal - current) * ease;
+
+      if (el) {
+        el.style.transform = `translate3d(0, ${current.toFixed(1)}px, 0)`;
+      }
+
+      // Keep animating (inertia catch-up) only while there's meaningful
+      // distance left to close; stop once settled to save battery/CPU.
+      if (Math.abs(goal - current) > 0.1) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        rafId = null;
+      }
     }
 
     function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
+      if (rafId === null) {
+        rafId = requestAnimationFrame(tick);
+      }
     }
 
-    update();
+    current = target();
+    el.style.transform = `translate3d(0, ${current.toFixed(1)}px, 0)`;
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [speed]);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
+  }, [speed, ease]);
 
   return (
     <div ref={ref} aria-hidden className={className}>

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
 import TableOfContents from "@/components/TableOfContents";
 import Parallax from "@/components/Parallax";
+import ProjectHaptics from "@/components/ProjectHaptics";
 import { projects } from "@/lib/projects";
 
 export default function Home() {
@@ -40,6 +41,7 @@ export default function Home() {
       <Footer />
 
       <TableOfContents projects={projects} />
+      <ProjectHaptics projects={projects} />
     </div>
   );
 }
