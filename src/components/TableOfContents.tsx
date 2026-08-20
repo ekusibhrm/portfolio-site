@@ -5,6 +5,7 @@ import type { Project } from "@/lib/projects";
 
 export default function TableOfContents({ projects }: { projects: Project[] }) {
   const [activeId, setActiveId] = useState("home");
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     const ids = ["home", ...projects.map((p) => p.slug), "contact"];
@@ -32,61 +33,94 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
       aria-label="目次"
       className="fixed bottom-4 right-4 z-40 xl:bottom-auto xl:left-6 xl:right-auto xl:top-1/2 xl:-translate-y-1/2"
     >
-      <div className="w-48 rounded-xl border border-navy-700 bg-navy-950/90 px-4 py-4 font-mono text-[11px] leading-relaxed shadow-lg shadow-black/40 backdrop-blur-sm xl:w-56 xl:px-5 xl:py-5 xl:text-xs">
-        <a
-          href="#home"
-          aria-current={activeId === "home" ? "location" : undefined}
-          className={`block truncate transition-colors ${
-            activeId === "home"
-              ? "font-bold text-accent"
-              : "text-slate-500 hover:text-slate-300"
+      <div className="w-48 xl:w-56">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="toc-tree"
+          className={`flex w-full items-center gap-1.5 border border-navy-700 bg-navy-950/90 px-4 py-3 backdrop-blur-sm xl:px-5 ${
+            open ? "rounded-t-xl" : "rounded-xl"
           }`}
         >
-          <span className="text-slate-600">{"├─ "}</span>home
-        </a>
+          <span className="h-2 w-2 rounded-full bg-red-400/70" />
+          <span className="h-2 w-2 rounded-full bg-amber-400/70" />
+          <span className="h-2 w-2 rounded-full bg-emerald-400/70" />
+          <span className="ml-2 flex-1 truncate text-left font-mono text-[11px] text-slate-400 xl:text-xs">
+            目次
+          </span>
+          <span className="font-mono text-[10px] text-slate-500">
+            {open ? "▾" : "▸"}
+          </span>
+        </button>
 
         <div
-          className={`truncate ${inProjects ? "font-bold text-accent" : "text-slate-500"}`}
+          id="toc-tree"
+          className={`grid overflow-hidden bg-navy-950/90 backdrop-blur-sm transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none ${
+            open
+              ? "grid-rows-[1fr] rounded-b-xl border-x border-b border-navy-700"
+              : "grid-rows-[0fr]"
+          }`}
         >
-          <span className="text-slate-600">{"├─ "}</span>projects/
-        </div>
-
-        <div>
-          {projects.map((project, i) => {
-            const isLast = i === projects.length - 1;
-            const active = activeId === project.slug;
-            return (
+          <div className="overflow-hidden">
+            <div className="px-4 py-4 font-mono text-[11px] leading-relaxed xl:px-5 xl:py-5 xl:text-xs">
               <a
-                key={project.slug}
-                href={`#${project.slug}`}
-                aria-current={active ? "location" : undefined}
+                href="#home"
+                aria-current={activeId === "home" ? "location" : undefined}
                 className={`block truncate transition-colors ${
-                  active
+                  activeId === "home"
                     ? "font-bold text-accent"
                     : "text-slate-500 hover:text-slate-300"
                 }`}
               >
-                <span className="text-slate-600">
-                  {"│  "}
-                  {isLast ? "└─ " : "├─ "}
-                </span>
-                {project.slug}
+                <span className="text-slate-600">{"├─ "}</span>home
               </a>
-            );
-          })}
-        </div>
 
-        <a
-          href="#contact"
-          aria-current={activeId === "contact" ? "location" : undefined}
-          className={`block truncate transition-colors ${
-            activeId === "contact"
-              ? "font-bold text-accent"
-              : "text-slate-500 hover:text-slate-300"
-          }`}
-        >
-          <span className="text-slate-600">{"└─ "}</span>contact
-        </a>
+              <div
+                className={`truncate ${inProjects ? "font-bold text-accent" : "text-slate-500"}`}
+              >
+                <span className="text-slate-600">{"├─ "}</span>projects/
+              </div>
+
+              <div>
+                {projects.map((project, i) => {
+                  const isLast = i === projects.length - 1;
+                  const active = activeId === project.slug;
+                  return (
+                    <a
+                      key={project.slug}
+                      href={`#${project.slug}`}
+                      aria-current={active ? "location" : undefined}
+                      className={`block truncate transition-colors ${
+                        active
+                          ? "font-bold text-accent"
+                          : "text-slate-500 hover:text-slate-300"
+                      }`}
+                    >
+                      <span className="text-slate-600">
+                        {"│  "}
+                        {isLast ? "└─ " : "├─ "}
+                      </span>
+                      {project.slug}
+                    </a>
+                  );
+                })}
+              </div>
+
+              <a
+                href="#contact"
+                aria-current={activeId === "contact" ? "location" : undefined}
+                className={`block truncate transition-colors ${
+                  activeId === "contact"
+                    ? "font-bold text-accent"
+                    : "text-slate-500 hover:text-slate-300"
+                }`}
+              >
+                <span className="text-slate-600">{"└─ "}</span>contact
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   );
