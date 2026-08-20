@@ -1,14 +1,12 @@
+import Image from "next/image";
 import type { Project } from "@/lib/projects";
 import ProjectGallery from "@/components/ProjectGallery";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <article
-      className="overflow-hidden rounded-2xl border border-navy-700"
-      style={{
-        background: "rgba(255,255,255,0.02)",
-        boxShadow: "0 8px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(127,216,255,0.08)",
-      }}
+      className="group overflow-hidden rounded-2xl border border-navy-700 shadow-[0_8px_30px_rgba(0,0,0,0.35),0_0_0_1px_rgba(127,216,255,0.08)] transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(0,0,0,0.55),0_0_0_1px_rgba(127,216,255,0.16)]"
+      style={{ background: "rgba(255,255,255,0.02)" }}
     >
       {/* code-editor style title bar */}
       <div className="flex items-center gap-1.5 border-b border-navy-700 bg-navy-900/60 px-4 py-3">
@@ -19,6 +17,19 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.slug}
         </span>
       </div>
+
+      {project.coverImage && (
+        <div className="relative aspect-video overflow-hidden border-b border-navy-700 bg-navy-900">
+          <Image
+            src={project.coverImage}
+            alt={`${project.name} スクリーンショット`}
+            fill
+            sizes="(min-width: 768px) 768px, 100vw"
+            className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+            priority={false}
+          />
+        </div>
+      )}
 
       <div className="flex flex-col gap-6 p-6 sm:p-8">
         <div>

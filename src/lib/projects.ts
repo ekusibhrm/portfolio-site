@@ -5,6 +5,7 @@ export type Project = {
   challenge: string;
   techStack: string[];
   techNote: string;
+  coverImage?: string;
   demoUrl?: string;
   demoNote?: string;
   screenshots?: string[];
@@ -24,6 +25,7 @@ export const projects: Project[] = [
     techStack: ["Laravel", "Stripe", "MySQL", "Pest"],
     techNote:
       "Stripeイベントの重複配信に対して、イベントIDへのUNIQUE制約で二重処理を防止するWebhook設計を実装しました。",
+    coverImage: "/screenshots/subscription-saas-demo-cover.png",
     demoUrl: "https://subscription-saas-demo-production.up.railway.app",
     demoNote: "テスト決済のみで、実際の課金は発生しません。",
     githubUrl: "https://github.com/ekusibhrm/subscription-saas-demo",
@@ -39,6 +41,7 @@ export const projects: Project[] = [
     techStack: ["PHP", "Laravel", "MySQL", "Pest"],
     techNote:
       "設計判断・レビューは自分が担当し、実装とテストコードの作成をClaude Codeに任せる分担で開発しました。",
+    coverImage: "/screenshots/laravel-ai-lab-1.png",
     screenshots: [
       "/screenshots/laravel-ai-lab-1.png",
       "/screenshots/laravel-ai-lab-2.png",
@@ -58,6 +61,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
     techNote:
       "外部ライブラリに頼らず、Intersection Observerベースのスクロールフェードインやカウントアップ演出を軽量に実装しました。",
+    coverImage: "/screenshots/slimoa-lp-cover.png",
     demoUrl: "https://slimoa-lp.vercel.app",
     demoNote: "架空の商品のデモLPです。実在の商品ではありません。",
     githubUrl: "https://github.com/ekusibhrm/slimoa-lp",
@@ -71,6 +75,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
     techNote:
       "共通ヘッダー/フッターのレイアウト化、メッシュグラデーション背景、グラスモーフィズムなど、モダンなSaaSサイトのデザインパターンを実装しました。",
+    coverImage: "/screenshots/vantra-cover.png",
     demoUrl: "https://vantra-omega.vercel.app",
     demoNote: "架空の企業のデモサイトです。実在の企業ではありません。",
     githubUrl: "https://github.com/ekusibhrm/vantra",
@@ -84,6 +89,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
     techNote:
       "装飾要素を極力削ぎ落とし、罫線・行間・数字の並びだけでセクションを区切るレイアウトを実装しました。",
+    coverImage: "/screenshots/minato-tax-cover.png",
     demoUrl: "https://minato-tax.vercel.app",
     demoNote: "架空の税理士法人のデモサイトです。実在の事務所ではありません。",
     githubUrl: "https://github.com/ekusibhrm/minato-tax",
@@ -97,6 +103,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
     techNote:
       "開催日までの残り時間を表示するカウントダウンタイマーをクライアントコンポーネントで実装しました。",
+    coverImage: "/screenshots/spectra-fes-cover.png",
     demoUrl: "https://spectra-fes.vercel.app",
     demoNote: "架空の音楽フェスのデモサイトです。実在のイベントではありません。",
     githubUrl: "https://github.com/ekusibhrm/spectra-fes",
@@ -110,6 +117,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
     techNote:
       "next/imageによる画像最適化を前提に、施工事例(Works)を画像主体の大きめカードで見せるレイアウトを実装しました。",
+    coverImage: "/screenshots/sumica-cover.png",
     demoUrl: "https://sumica-nu.vercel.app",
     demoNote: "架空の企業のデモサイトです。実在の企業ではありません。",
     githubUrl: "https://github.com/ekusibhrm/sumica",

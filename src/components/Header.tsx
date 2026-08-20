@@ -24,20 +24,22 @@ export default function Header() {
         <div className="flex flex-col gap-6">
           <div className="flex items-start justify-between gap-4">
             <p className="font-mono text-sm text-accent">
-              <span className="text-slate-500">$</span> whoami
+              <span className="typing-whoami">
+                <span className="text-slate-500">$</span> whoami
+              </span>
             </p>
 
             {/* small character illustration for mobile/tablet */}
             <div className="pointer-events-none shrink-0 select-none lg:hidden">
               <div
-                className="relative h-14 w-14 overflow-hidden rounded-full ring-1 ring-accent/20"
+                className="relative h-16 w-16 overflow-hidden rounded-full ring-1 ring-accent/20"
                 style={{ boxShadow: "0 0 24px rgba(34,211,238,0.16)" }}
               >
                 <Image
                   src="/character-hero.png"
                   alt=""
                   fill
-                  sizes="56px"
+                  sizes="64px"
                   className="scale-[1.15] object-cover"
                 />
               </div>
@@ -78,14 +80,14 @@ export default function Header() {
         {/* character illustration (same character as the Lancers header image) */}
         <div className="pointer-events-none hidden shrink-0 select-none lg:block">
           <div
-            className="relative h-[180px] w-[180px] overflow-hidden rounded-full ring-1 ring-accent/20"
+            className="relative h-[216px] w-[216px] overflow-hidden rounded-full ring-1 ring-accent/20"
             style={{ boxShadow: "0 0 48px rgba(34,211,238,0.16)" }}
           >
             <Image
               src="/character-hero.png"
               alt=""
               fill
-              sizes="180px"
+              sizes="216px"
               className="scale-[1.15] object-cover"
             />
           </div>
