@@ -5,7 +5,7 @@ import type { Project } from "@/lib/projects";
 
 export default function TableOfContents({ projects }: { projects: Project[] }) {
   const [activeId, setActiveId] = useState("home");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const ids = ["home", ...projects.map((p) => p.slug), "contact"];
@@ -105,7 +105,7 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
                       </span>
                       {project.name}
                     </span>
-                    <span className="block pl-[3.5em] text-[10px] leading-snug text-slate-600 xl:text-[11px]">
+                    <span className="block pl-[3.5em] text-[10px] leading-snug text-accent-2/70 xl:text-[11px]">
                       {project.subtitle}
                     </span>
                   </a>
