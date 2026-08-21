@@ -1,8 +1,15 @@
 import Image from "next/image";
 import Parallax from "@/components/Parallax";
 import TiltWrapper from "@/components/TiltWrapper";
+import CareerModal from "@/components/CareerModal";
 
-export default function Header() {
+export default function Header({
+  projectsHref = "#projects",
+  projectsExternal = false,
+}: {
+  projectsHref?: string;
+  projectsExternal?: boolean;
+}) {
   return (
     <header
       id="home"
@@ -72,7 +79,10 @@ export default function Header() {
 
           <div className="flex flex-wrap gap-3 pt-2">
             <a
-              href="#projects"
+              href={projectsHref}
+              {...(projectsExternal
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-navy-950 shadow-sm shadow-accent/20 transition hover:bg-accent/90"
             >
               プロジェクトを見る
@@ -85,6 +95,7 @@ export default function Header() {
             >
               GitHub
             </a>
+            <CareerModal />
           </div>
         </div>
 
