@@ -130,7 +130,7 @@ function CareerModalPanel({ onClose }: { onClose: () => void }) {
         e.stopPropagation();
         setSkip(true);
       }}
-      className="relative flex h-full w-full flex-col overflow-hidden border-navy-700 bg-navy-950 sm:h-auto sm:max-h-[85vh] sm:max-w-2xl sm:rounded-2xl sm:border"
+      className="relative flex max-h-[80vh] w-full max-w-md flex-col overflow-hidden rounded-2xl border border-navy-700 bg-navy-950 sm:max-w-2xl"
       style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}
     >
       <div className="flex shrink-0 items-center justify-between border-b border-navy-700 bg-navy-900/60 px-5 py-4 sm:px-6">
@@ -206,7 +206,7 @@ export default function CareerModal() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="rounded-lg border border-navy-600 px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-accent/50 hover:text-white"
+        className="rounded-lg border border-navy-600 px-2.5 py-2 text-xs font-semibold whitespace-nowrap text-slate-200 transition hover:border-accent/50 hover:text-white sm:px-5 sm:py-2.5 sm:text-sm"
       >
         経歴を見る
       </button>
@@ -217,7 +217,7 @@ export default function CareerModal() {
           aria-modal="true"
           aria-labelledby="career-modal-title"
           onClick={close}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 motion-safe:animate-[fade-in_150ms_ease-out] sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 motion-safe:animate-[fade-in_150ms_ease-out] sm:p-6"
         >
           <CareerModalPanel onClose={close} />
         </div>

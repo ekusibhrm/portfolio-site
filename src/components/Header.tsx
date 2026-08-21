@@ -34,7 +34,7 @@ export default function Header({
         />
       </Parallax>
 
-      <div className="relative mx-auto flex max-w-3xl flex-col gap-6 px-6 py-20 sm:py-24 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+      <div className="relative mx-auto flex max-w-3xl flex-col gap-6 px-4 py-20 sm:px-6 sm:py-24 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
         <div className="flex flex-col gap-6">
           <div className="flex items-start justify-between gap-4">
             <p className="font-mono text-sm text-accent">
@@ -77,13 +77,13 @@ export default function Header({
             Codeを活用したAI駆動開発で高速に回すスタイルが得意です。
           </p>
 
-          <div className="flex flex-wrap gap-3 pt-2">
+          <div className="flex flex-nowrap gap-1.5 pt-2 sm:gap-3">
             <a
               href={projectsHref}
               {...(projectsExternal
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-navy-950 shadow-sm shadow-accent/20 transition hover:bg-accent/90"
+              className="rounded-lg bg-accent px-2.5 py-2 text-xs font-semibold whitespace-nowrap text-navy-950 shadow-sm shadow-accent/20 transition hover:bg-accent/90 sm:px-5 sm:py-2.5 sm:text-sm"
             >
               プロジェクトを見る
             </a>
@@ -91,7 +91,7 @@ export default function Header({
               href="https://github.com/ekusibhrm"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-navy-600 px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-accent/50 hover:text-white"
+              className="rounded-lg border border-navy-600 px-2.5 py-2 text-xs font-semibold whitespace-nowrap text-slate-200 transition hover:border-accent/50 hover:text-white sm:px-5 sm:py-2.5 sm:text-sm"
             >
               GitHub
             </a>
