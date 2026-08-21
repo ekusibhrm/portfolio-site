@@ -33,6 +33,34 @@ export const projects: Project[] = [
     gumroadUrl: "https://ekusibhrm.gumroad.com/l/nrstvi",
   },
   {
+    slug: "sumica",
+    name: "SUMICA",
+    subtitle: "架空の内装リノベーション会社サイト",
+    challenge:
+      "「工務店っぽさ」ではなく高級感のある設計事務所寄りのトーンを目指し、木目・ベージュ基調の配色と明朝体見出しで「和」の落ち着きを表現したコーポレートサイトのデモプロジェクトです。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    techNote:
+      "next/imageによる画像最適化を前提に、施工事例(Works)を画像主体の大きめカードで見せるレイアウトを実装しました。",
+    coverImage: "/screenshots/sumica-cover.png",
+    demoUrl: "https://sumica-nu.vercel.app",
+    demoNote: "架空の企業のデモサイトです。実在の企業ではありません。",
+    githubUrl: "https://github.com/ekusibhrm/sumica",
+  },
+  {
+    slug: "spectra-fes",
+    name: "SPECTRA FESTIVAL",
+    subtitle: "架空の音楽フェス公式サイト",
+    challenge:
+      "同じくポートフォリオに掲載しているVantra(モダンSaaS系)とは対照的な方向性として、ビビッドなネオンカラーと大胆なタイポグラフィでフェスらしい高揚感を表現したデモプロジェクトです。実写素材がない前提で、抽象的な幾何学グラフィックを写真代わりに使っています。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    techNote:
+      "開催日までの残り時間を表示するカウントダウンタイマーをクライアントコンポーネントで実装しました。",
+    coverImage: "/screenshots/spectra-fes-cover.png",
+    demoUrl: "https://spectra-fes.vercel.app",
+    demoNote: "架空の音楽フェスのデモサイトです。実在のイベントではありません。",
+    githubUrl: "https://github.com/ekusibhrm/spectra-fes",
+  },
+  {
     slug: "laravel-ai-lab",
     name: "laravel-ai-lab",
     subtitle: "案件・タスク管理のマルチユーザーSaaS",
@@ -93,33 +121,5 @@ export const projects: Project[] = [
     demoUrl: "https://minato-tax.vercel.app",
     demoNote: "架空の税理士法人のデモサイトです。実在の事務所ではありません。",
     githubUrl: "https://github.com/ekusibhrm/minato-tax",
-  },
-  {
-    slug: "spectra-fes",
-    name: "SPECTRA FESTIVAL",
-    subtitle: "架空の音楽フェス公式サイト",
-    challenge:
-      "同じくポートフォリオに掲載しているVantra(モダンSaaS系)とは対照的な方向性として、ビビッドなネオンカラーと大胆なタイポグラフィでフェスらしい高揚感を表現したデモプロジェクトです。実写素材がない前提で、抽象的な幾何学グラフィックを写真代わりに使っています。",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    techNote:
-      "開催日までの残り時間を表示するカウントダウンタイマーをクライアントコンポーネントで実装しました。",
-    coverImage: "/screenshots/spectra-fes-cover.png",
-    demoUrl: "https://spectra-fes.vercel.app",
-    demoNote: "架空の音楽フェスのデモサイトです。実在のイベントではありません。",
-    githubUrl: "https://github.com/ekusibhrm/spectra-fes",
-  },
-  {
-    slug: "sumica",
-    name: "SUMICA",
-    subtitle: "架空の内装リノベーション会社サイト",
-    challenge:
-      "「工務店っぽさ」ではなく高級感のある設計事務所寄りのトーンを目指し、木目・ベージュ基調の配色と明朝体見出しで「和」の落ち着きを表現したコーポレートサイトのデモプロジェクトです。",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    techNote:
-      "next/imageによる画像最適化を前提に、施工事例(Works)を画像主体の大きめカードで見せるレイアウトを実装しました。",
-    coverImage: "/screenshots/sumica-cover.png",
-    demoUrl: "https://sumica-nu.vercel.app",
-    demoNote: "架空の企業のデモサイトです。実在の企業ではありません。",
-    githubUrl: "https://github.com/ekusibhrm/sumica",
   },
 ];
