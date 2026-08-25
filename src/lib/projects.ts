@@ -26,8 +26,6 @@ export const projects: Project[] = [
     techNote:
       "Stripeイベントの重複配信に対して、イベントIDへのUNIQUE制約で二重処理を防止するWebhook設計を実装しました。",
     coverImage: "/screenshots/subscription-saas-demo-cover.png",
-    demoUrl: "https://subscription-saas-demo-production.up.railway.app",
-    demoNote: "テスト決済のみで、実際の課金は発生しません。",
     githubUrl: "https://github.com/ekusibhrm/subscription-saas-demo",
     githubPrivate: true,
     gumroadUrl: "https://ekusibhrm.gumroad.com/l/nrstvi",
