@@ -144,7 +144,8 @@ html.has-custom-cursor * {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 70;
+  /* Always frontmost — above modals/lightboxes (z-[100]) too. */
+  z-index: 200;
   pointer-events: none;
   will-change: transform;
   transform: translate3d(-100px, -100px, 0);

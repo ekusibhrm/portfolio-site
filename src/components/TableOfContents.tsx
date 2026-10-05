@@ -28,6 +28,28 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
 
   const inProjects = projects.some((p) => p.slug === activeId);
 
+  // Project rows are an accordion: clicking a TOC entry can open a row
+  // while another one is still open/animating closed elsewhere on the
+  // page, which shifts layout. Letting the browser's native hash-jump
+  // scroll happen immediately would land on the pre-shift position, so
+  // we take over navigation and let <ProjectsList> (which owns the
+  // accordion) scroll once the open/close transition has actually
+  // settled — see its hashchange handler.
+  function handleProjectClick(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    slug: string,
+  ) {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      return;
+    }
+    e.preventDefault();
+    const hash = `#${slug}`;
+    if (window.location.hash !== hash) {
+      window.history.pushState(null, "", hash);
+    }
+    window.dispatchEvent(new Event("hashchange"));
+  }
+
   return (
     <nav aria-label="目次" className="fixed bottom-4 right-4 z-40">
       <div className="w-52 xl:w-60">
@@ -86,6 +108,7 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
                   <a
                     key={project.slug}
                     href={`#${project.slug}`}
+                    onClick={(e) => handleProjectClick(e, project.slug)}
                     aria-current={active ? "location" : undefined}
                     className={`block py-1 transition-colors ${
                       active

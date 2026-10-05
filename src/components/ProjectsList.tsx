@@ -19,6 +19,10 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
   // Starts closed on both server and the first client render so hydration
   // matches; opens from the URL hash (if any) on the client only, below.
   const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const openSlugRef = useRef<string | null>(null);
+  useEffect(() => {
+    openSlugRef.current = openSlug;
+  }, [openSlug]);
   const [hoverSlug, setHoverSlug] = useState<string | null>(null);
   const previewRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -36,9 +40,56 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
   }, []);
 
   useEffect(() => {
+    function openAndScroll(slug: string) {
+      const wasAlreadyOpen = openSlugRef.current === slug;
+      setOpenSlug(slug);
+
+      const row = document.getElementById(slug);
+      if (!row) return;
+
+      const reduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      const scrollToRow = () =>
+        row.scrollIntoView({
+          behavior: reduced ? "auto" : "smooth",
+          block: "start",
+        });
+
+      // Nothing is animating in this case (row is already open, or
+      // motion is disabled so the accordion snaps instantly) — the
+      // layout is already settled, so scroll right away.
+      const panel = document.getElementById(`project-panel-${slug}`);
+      if (wasAlreadyOpen || reduced || !panel) {
+        scrollToRow();
+        return;
+      }
+
+      // Otherwise wait for the accordion's open/close transition (this
+      // row opening, and whichever row was open before collapsing) to
+      // actually finish before scrolling, so the target doesn't land at
+      // a position that's about to shift under it.
+      let settled = false;
+      function onTransitionEnd(e: TransitionEvent) {
+        if (e.target !== panel || e.propertyName !== "max-height") {
+          return;
+        }
+        settled = true;
+        panel?.removeEventListener("transitionend", onTransitionEnd);
+        window.clearTimeout(fallback);
+        scrollToRow();
+      }
+      const fallback = window.setTimeout(() => {
+        if (settled) return;
+        panel?.removeEventListener("transitionend", onTransitionEnd);
+        scrollToRow();
+      }, 600);
+      panel.addEventListener("transitionend", onTransitionEnd);
+    }
+
     function syncFromHash() {
       const hash = window.location.hash.replace("#", "");
-      if (projects.some((p) => p.slug === hash)) setOpenSlug(hash);
+      if (projects.some((p) => p.slug === hash)) openAndScroll(hash);
     }
     syncFromHash();
     window.addEventListener("hashchange", syncFromHash);
@@ -154,6 +205,18 @@ function ProjectRow({
 }) {
   const panelId = `project-panel-${project.slug}`;
   const headingId = `project-heading-${project.slug}`;
+  const contentRef = useRef<HTMLDivElement>(null);
+  // Chrome has a layout-caching bug with the `grid-template-rows: 0fr/1fr`
+  // animate-to-auto-height trick in some nesting contexts, where it silently
+  // computes to 0 and never recovers — reproduced directly in devtools. A
+  // JS-measured max-height is the standard, reliable alternative.
+  const [maxHeight, setMaxHeight] = useState(0);
+
+  useEffect(() => {
+    const content = contentRef.current;
+    if (!content) return;
+    setMaxHeight(open ? content.scrollHeight : 0);
+  }, [open]);
 
   return (
     <div id={project.slug} className="scroll-mt-28">
@@ -220,10 +283,10 @@ function ProjectRow({
         id={panelId}
         role="region"
         aria-labelledby={headingId}
-        className="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
-        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+        className="overflow-hidden transition-[max-height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+        style={{ maxHeight: `${maxHeight}px` }}
       >
-        <div className="overflow-hidden">
+        <div ref={contentRef}>
           <ProjectDetail project={project} />
         </div>
       </div>
