@@ -1,4 +1,6 @@
 import Parallax from "@/components/Parallax";
+import Reveal from "@/components/Reveal";
+import Magnetic from "@/components/Magnetic";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -10,37 +12,67 @@ export default function Footer() {
     >
       <Parallax
         speed={0.05}
-        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
+        className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-accent/10 blur-3xl"
+      />
+      <Parallax
+        speed={-0.04}
+        className="pointer-events-none absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-accent-2/[0.08] blur-3xl"
       />
 
-      <div className="relative mx-auto flex max-w-3xl flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-2 font-mono text-sm">
-          <span className="text-slate-500">Zenn(書籍・技術記事)</span>
-          <a
-            href="https://zenn.dev/ekusibhrm"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            zenn.dev/ekusibhrm ↗
-          </a>
-        </div>
+      <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-24 sm:px-8 sm:py-28">
+        <Reveal>
+          <h2 className="font-mono text-sm text-accent">
+            <span className="text-ink-faint">$</span> open ./contact
+          </h2>
+          <p className="mt-3 max-w-2xl text-balance font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold leading-[1.02] tracking-tight text-white">
+            何かつくりませんか。
+            <br />
+            まずは気軽にご連絡ください。
+          </p>
+        </Reveal>
 
-        <div className="flex flex-col gap-2 font-mono text-sm sm:items-end">
-          <span className="text-slate-500">連絡先</span>
-          <a
-            href="https://github.com/ekusibhrm"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            GitHub経由でご連絡ください ↗
-          </a>
-        </div>
+        <Reveal
+          delay={100}
+          className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center"
+        >
+          <Magnetic>
+            <a
+              href="https://github.com/ekusibhrm"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="GITHUB"
+              className="inline-flex w-fit items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-navy-950 shadow-sm shadow-accent/20 transition hover:bg-accent/90"
+            >
+              GitHub経由でご連絡ください ↗
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="https://zenn.dev/ekusibhrm"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="ZENN"
+              className="inline-flex w-fit items-center gap-2 rounded-lg border border-navy-600 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-accent/50 hover:text-white"
+            >
+              Zenn（書籍・技術記事）↗
+            </a>
+          </Magnetic>
+        </Reveal>
       </div>
 
-      <div className="border-t border-navy-800 px-6 pb-28 pt-5 text-left text-xs text-slate-600 xl:pb-5 xl:text-center">
-        © {year}{" "}Hiromu — Built with Next.js &amp; Tailwind CSS
+      <div className="relative border-t border-navy-800 px-6 py-6 sm:px-8">
+        <div className="mx-auto flex w-full max-w-5xl flex-col items-start justify-between gap-4 pb-24 text-xs text-ink-faint sm:flex-row sm:items-center">
+          <p>© {year} Hiromu — Built with Next.js &amp; Tailwind CSS</p>
+          <Magnetic>
+            <a
+              href="#home"
+              data-cursor="TOP"
+              className="inline-flex items-center gap-1.5 font-mono text-ink-muted transition hover:text-accent"
+            >
+              back to top ↑
+            </a>
+          </Magnetic>
+        </div>
       </div>
     </footer>
   );

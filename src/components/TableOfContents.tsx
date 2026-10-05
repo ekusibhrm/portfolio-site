@@ -29,11 +29,8 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
   const inProjects = projects.some((p) => p.slug === activeId);
 
   return (
-    <nav
-      aria-label="目次"
-      className="fixed bottom-4 right-4 z-40 xl:bottom-auto xl:left-6 xl:right-auto xl:top-1/2 xl:-translate-y-1/2"
-    >
-      <div className="w-52 xl:w-64">
+    <nav aria-label="目次" className="fixed bottom-4 right-4 z-40">
+      <div className="w-52 xl:w-60">
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -46,10 +43,10 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
           <span className="h-2 w-2 rounded-full bg-red-400/70" />
           <span className="h-2 w-2 rounded-full bg-amber-400/70" />
           <span className="h-2 w-2 rounded-full bg-emerald-400/70" />
-          <span className="ml-2 flex-1 truncate text-left font-mono text-[11px] text-slate-400 xl:text-xs">
+          <span className="ml-2 flex-1 truncate text-left font-mono text-[11px] text-ink-muted xl:text-xs">
             目次
           </span>
-          <span className="font-mono text-[10px] text-slate-500">
+          <span className="font-mono text-[10px] text-ink-faint">
             {open ? "▾" : "▸"}
           </span>
         </button>
@@ -69,16 +66,16 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
               className={`block truncate transition-colors ${
                 activeId === "home"
                   ? "font-bold text-accent"
-                  : "text-slate-500 hover:text-slate-300"
+                  : "text-ink-faint hover:text-ink-muted"
               }`}
             >
-              <span className="text-slate-600">{"├─ "}</span>home
+              <span className="text-ink-faint/70">{"├─ "}</span>home
             </a>
 
             <div
-              className={`truncate ${inProjects ? "font-bold text-accent" : "text-slate-500"}`}
+              className={`truncate ${inProjects ? "font-bold text-accent" : "text-ink-faint"}`}
             >
-              <span className="text-slate-600">{"├─ "}</span>projects/
+              <span className="text-ink-faint/70">{"├─ "}</span>projects/
             </div>
 
             <div>
@@ -93,13 +90,13 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
                     className={`block py-1 transition-colors ${
                       active
                         ? "text-accent"
-                        : "text-slate-500 hover:text-slate-300"
+                        : "text-ink-faint hover:text-ink-muted"
                     }`}
                   >
                     <span
                       className={`block truncate ${active ? "font-bold" : ""}`}
                     >
-                      <span className="text-slate-600">
+                      <span className="text-ink-faint/70">
                         {"│  "}
                         {isLast ? "└─ " : "├─ "}
                       </span>
@@ -119,10 +116,10 @@ export default function TableOfContents({ projects }: { projects: Project[] }) {
               className={`block truncate transition-colors ${
                 activeId === "contact"
                   ? "font-bold text-accent"
-                  : "text-slate-500 hover:text-slate-300"
+                  : "text-ink-faint hover:text-ink-muted"
               }`}
             >
-              <span className="text-slate-600">{"└─ "}</span>contact
+              <span className="text-ink-faint/70">{"└─ "}</span>contact
             </a>
           </div>
         </div>

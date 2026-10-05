@@ -1,8 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectsList from "@/components/ProjectsList";
 import TableOfContents from "@/components/TableOfContents";
 import Parallax from "@/components/Parallax";
+import Reveal from "@/components/Reveal";
 import ProjectHaptics from "@/components/ProjectHaptics";
 import { projects } from "@/lib/projects";
 
@@ -13,7 +14,7 @@ export default function Home() {
 
       <main
         id="projects"
-        className="relative overflow-hidden px-6 py-16 sm:py-20"
+        className="relative overflow-hidden px-6 py-24 sm:px-8 sm:py-32"
       >
         <Parallax
           speed={0.06}
@@ -24,17 +25,24 @@ export default function Home() {
           className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-accent-2/10 blur-3xl"
         />
 
-        <div className="relative mx-auto w-full max-w-3xl">
-          <h2 className="font-mono text-sm text-slate-500">
-            <span className="text-accent">$</span> ls ./projects
-          </h2>
-          <p className="mt-2 text-2xl font-bold text-white">プロジェクト</p>
+        <div className="relative mx-auto w-full max-w-5xl">
+          <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="font-mono text-sm text-accent">
+                <span className="text-ink-faint">$</span> ls ./projects
+              </h2>
+              <p className="mt-3 font-display text-[clamp(2.2rem,6vw,4rem)] font-bold leading-[0.95] tracking-tight text-white">
+                Selected Work
+              </p>
+            </div>
+            <p className="max-w-xs text-sm leading-relaxed text-ink-muted sm:text-right">
+              実案件からデモ用のプロジェクトまで、設計の意図と技術選定の理由を添えてまとめています。クリックで詳細を展開できます。
+            </p>
+          </Reveal>
 
-          <div className="mt-8 flex flex-col gap-8">
-            {projects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
+          <Reveal delay={100} className="mt-12 sm:mt-16">
+            <ProjectsList projects={projects} />
+          </Reveal>
         </div>
       </main>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import Magnetic from "@/components/Magnetic";
 
 const CHAR_DELAY_MS = 32;
 
@@ -22,7 +23,7 @@ const sections: { heading: string; body: ReactNode }[] = [
   {
     heading: "職務要約",
     body: (
-      <p className="leading-relaxed text-slate-300">
+      <p className="leading-relaxed text-ink-muted">
         Webアプリケーションエンジニアとして約8年の開発経験。PHP（Laravel／CakePHP）を中心に、HTML／CSS／JavaScriptも同期間扱っており、フロントエンドを含めた一気通貫の開発が可能。Next.jsも実務で使用。直近ではClaude（Claude
         Code／Cursor）を活用した開発を実務・個人開発の両面で実践している。
       </p>
@@ -35,7 +36,7 @@ const sections: { heading: string; body: ReactNode }[] = [
         {skills.map((skill) => (
           <li
             key={skill.label}
-            className="flex gap-2 leading-relaxed text-slate-300"
+            className="flex gap-2 leading-relaxed text-ink-muted"
           >
             <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
             <span>
@@ -54,7 +55,7 @@ const sections: { heading: string; body: ReactNode }[] = [
         {highlights.map((item) => (
           <li
             key={item}
-            className="flex gap-2 leading-relaxed text-slate-300"
+            className="flex gap-2 leading-relaxed text-ink-muted"
           >
             <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
             {item}
@@ -134,7 +135,7 @@ function CareerModalPanel({ onClose }: { onClose: () => void }) {
       style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}
     >
       <div className="flex shrink-0 items-center justify-between border-b border-navy-700 bg-navy-900/60 px-5 py-4 sm:px-6">
-        <h2 id="career-modal-title" className="font-mono text-sm text-slate-400">
+        <h2 id="career-modal-title" className="font-mono text-sm text-ink-muted">
           <span className="text-accent">$</span> cat ./career.md
         </h2>
         <button
@@ -142,7 +143,7 @@ function CareerModalPanel({ onClose }: { onClose: () => void }) {
           type="button"
           onClick={onClose}
           aria-label="閉じる"
-          className="text-2xl leading-none text-slate-300 transition hover:text-white"
+          className="text-2xl leading-none text-ink-muted transition hover:text-white"
         >
           ×
         </button>
@@ -158,7 +159,7 @@ function CareerModalPanel({ onClose }: { onClose: () => void }) {
               key={section.heading}
               className={i > 0 ? "mt-8" : undefined}
             >
-              <h3 className="font-mono text-xs uppercase tracking-wider text-slate-500">
+              <h3 className="font-mono text-xs uppercase tracking-wider text-ink-faint">
                 {section.heading.slice(0, typedLengths[i])}
                 {!reducedMotion && isTypingNow && (
                   <span className="ml-0.5 inline-block h-3 w-[2px] animate-pulse bg-accent align-middle motion-reduce:animate-none" />
@@ -203,13 +204,15 @@ export default function CareerModal() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="rounded-lg border border-navy-600 px-2.5 py-2 text-xs font-semibold whitespace-nowrap text-slate-200 transition hover:border-accent/50 hover:text-white sm:px-5 sm:py-2.5 sm:text-sm"
-      >
-        経歴を見る
-      </button>
+      <Magnetic>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="rounded-lg border border-navy-600 px-3 py-2.5 text-xs font-semibold whitespace-nowrap text-slate-200 transition hover:border-accent/50 hover:text-white sm:px-6 sm:py-3 sm:text-sm"
+        >
+          経歴を見る
+        </button>
+      </Magnetic>
 
       {open && (
         <div
