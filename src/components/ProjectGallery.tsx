@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 export default function ProjectGallery({
@@ -11,6 +12,15 @@ export default function ProjectGallery({
   alt: string;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  // Portaled to <body> so its `position: fixed` is anchored to the
+  // viewport, not to a transformed ancestor (e.g. <Reveal>'s scroll-entrance
+  // transform, which would otherwise become its containing block). Portals
+  // only exist client-side.
+  const [portalReady, setPortalReady] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPortalReady(true);
+  }, []);
 
   useEffect(() => {
     if (openIndex === null) return;
@@ -52,65 +62,70 @@ export default function ProjectGallery({
         ))}
       </div>
 
-      {openIndex !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setOpenIndex(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-navy-950/90 p-6"
-        >
-          <button
-            type="button"
-            onClick={() => setOpenIndex(null)}
-            aria-label="閉じる"
-            className="absolute right-5 top-5 text-2xl leading-none text-slate-300 hover:text-white"
-          >
-            ×
-          </button>
-
-          {images.length > 1 && (
-            <>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setOpenIndex((i) =>
-                    i === null ? i : (i - 1 + images.length) % images.length,
-                  );
-                }}
-                aria-label="前の画像"
-                className="absolute left-4 text-3xl text-slate-300 hover:text-white"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setOpenIndex((i) => (i === null ? i : (i + 1) % images.length));
-                }}
-                aria-label="次の画像"
-                className="absolute right-4 text-3xl text-slate-300 hover:text-white"
-              >
-                ›
-              </button>
-            </>
-          )}
-
+      {openIndex !== null &&
+        portalReady &&
+        createPortal(
           <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative h-[80vh] w-full max-w-4xl"
+            role="dialog"
+            aria-modal="true"
+            onClick={() => setOpenIndex(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-navy-950/90 p-6"
           >
-            <Image
-              src={images[openIndex]}
-              alt={`${alt} スクリーンショット ${openIndex + 1}`}
-              fill
-              sizes="90vw"
-              className="object-contain"
-            />
-          </div>
-        </div>
-      )}
+            <button
+              type="button"
+              onClick={() => setOpenIndex(null)}
+              aria-label="閉じる"
+              className="absolute right-5 top-5 text-2xl leading-none text-slate-300 hover:text-white"
+            >
+              ×
+            </button>
+
+            {images.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setOpenIndex((i) =>
+                      i === null ? i : (i - 1 + images.length) % images.length,
+                    );
+                  }}
+                  aria-label="前の画像"
+                  className="absolute left-4 text-3xl text-slate-300 hover:text-white"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setOpenIndex((i) =>
+                      i === null ? i : (i + 1) % images.length,
+                    );
+                  }}
+                  aria-label="次の画像"
+                  className="absolute right-4 text-3xl text-slate-300 hover:text-white"
+                >
+                  ›
+                </button>
+              </>
+            )}
+
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="relative h-[80vh] w-full max-w-4xl"
+            >
+              <Image
+                src={images[openIndex]}
+                alt={`${alt} スクリーンショット ${openIndex + 1}`}
+                fill
+                sizes="90vw"
+                className="object-contain"
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }

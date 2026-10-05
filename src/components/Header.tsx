@@ -119,7 +119,7 @@ export default function Header({
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
                   data-cursor="VIEW"
-                  className="rounded-lg bg-accent px-3 py-2.5 text-xs font-semibold whitespace-nowrap text-navy-950 shadow-sm shadow-accent/20 transition hover:bg-accent/90 sm:px-6 sm:py-3 sm:text-sm"
+                  className="inline-flex items-center justify-center rounded-lg bg-accent px-3 py-2.5 text-xs font-semibold whitespace-nowrap text-navy-950 shadow-sm shadow-accent/20 transition hover:bg-accent/90 sm:px-6 sm:py-3 sm:text-sm"
                 >
                   プロジェクトを見る
                 </a>
@@ -129,7 +129,7 @@ export default function Header({
                   href="https://github.com/ekusibhrm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg border border-navy-600 px-3 py-2.5 text-xs font-semibold whitespace-nowrap text-slate-200 transition hover:border-accent/50 hover:text-white sm:px-6 sm:py-3 sm:text-sm"
+                  className="inline-flex items-center justify-center rounded-lg border border-navy-600 px-3 py-2.5 text-xs font-semibold whitespace-nowrap text-slate-200 transition hover:border-accent/50 hover:text-white sm:px-6 sm:py-3 sm:text-sm"
                 >
                   GitHub
                 </a>

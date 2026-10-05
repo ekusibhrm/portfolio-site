@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import Magnetic from "@/components/Magnetic";
 
 const CHAR_DELAY_MS = 32;
@@ -182,6 +183,15 @@ function CareerModalPanel({ onClose }: { onClose: () => void }) {
 
 export default function CareerModal() {
   const [open, setOpen] = useState(false);
+  // Portaled to <body> so its `position: fixed` is anchored to the
+  // viewport, not to a transformed ancestor (e.g. <Reveal>'s scroll-entrance
+  // transform, which would otherwise become its containing block and shrink
+  // the overlay down to that ancestor's box). Portals only exist client-side.
+  const [portalReady, setPortalReady] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPortalReady(true);
+  }, []);
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -208,23 +218,26 @@ export default function CareerModal() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="rounded-lg border border-navy-600 px-3 py-2.5 text-xs font-semibold whitespace-nowrap text-slate-200 transition hover:border-accent/50 hover:text-white sm:px-6 sm:py-3 sm:text-sm"
+          className="inline-flex items-center justify-center rounded-lg border border-navy-600 px-3 py-2.5 text-xs font-semibold whitespace-nowrap text-slate-200 transition hover:border-accent/50 hover:text-white sm:px-6 sm:py-3 sm:text-sm"
         >
           経歴を見る
         </button>
       </Magnetic>
 
-      {open && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="career-modal-title"
-          onClick={close}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 motion-safe:animate-[fade-in_150ms_ease-out] sm:p-6"
-        >
-          <CareerModalPanel onClose={close} />
-        </div>
-      )}
+      {open &&
+        portalReady &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="career-modal-title"
+            onClick={close}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 motion-safe:animate-[fade-in_150ms_ease-out] sm:p-6"
+          >
+            <CareerModalPanel onClose={close} />
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
